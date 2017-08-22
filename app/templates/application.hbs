@@ -1,5 +1,14 @@
-{{!-- The following component displays Ember's default welcome message. --}}
-{{welcome-page}}
-{{!-- Feel free to remove this! --}}
+<h1>My Awesome Restaurant </h1>
+<p>This is {{restaurant.name}} restaurant and open only {{restaurant.yearsOpen}} Years.</p>
+
+<ul>
+  {{#each model as |food|}}
+    {{#if food.isAvailable}}
+      <li>{{food.name}} <button {{action 'makeUnavailable' food}}>Make Unavailable</button></li>
+      {{else}}
+      <li class="not-available">{{food.name}} <button {{action 'makeAvailable' food}}>make Available</button></li>
+    {{/if}}
+  {{/each}}
+</ul>
 
 {{outlet}}
